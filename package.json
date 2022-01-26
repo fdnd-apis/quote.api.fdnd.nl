@@ -1,0 +1,37 @@
+{
+  "name": "quote",
+  "version": "0.0.1",
+  "description": "It's a REST API for FDND quotes.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fdnd-apis/quotes.git"
+  },
+  "keywords": [
+    "node",
+    "json",
+    "api"
+  ],
+  "author": "Justus Sturkenboom <justus@ju5tu5.nl>",
+  "contributors": [
+    "Joost Faber <j.faber@hva.nl>"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fdnd-apis/quote/issues"
+  },
+  "homepage": "https://github.com/fdnd-apis/quote#readme",
+  "dependencies": {
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.2.0"
+  }
+}

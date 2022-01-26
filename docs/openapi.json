@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "FDND Quotes API",
+    "description": "It's an API that contains quotes used in lesson material for FDND.",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://quotes.api.fdnd.nl/v1/",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/quotes": {
+      "get": {
+        "description": "Returns all quotes from the system",
+        "responses": {
+          "200": {
+            "description": "A list of quotes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/:id": {
+      "get": {
+        "description": "Returns a single quote identiefied by :id from the system",
+        "responses": {
+          "200": {
+            "description": "A quote",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
