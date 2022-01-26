@@ -28,3 +28,5 @@ Quote.getAll = async function (page = 1) {
     meta: { page },
   }
 }
+
+module.exports = Quote
