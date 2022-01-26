@@ -1,5 +1,5 @@
 const express = require('express')
-const Tribe = require('../models/quote.model')
+const Quote = require('../models/quote.model')
 
 module.exports = express
   .Router()
