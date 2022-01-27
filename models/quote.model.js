@@ -19,7 +19,7 @@ const Quote = function (quote) {
  */
 Quote.getAll = async function (page = 1) {
   const rows = await db.query(
-    `SELECT q.quoteId, q.text, a.authorId, a.name FROM quote as q LEFT JOIN author as a ON q.authorId = a.authorId LIMIT ?,?`,
+    `SELECT q.quoteId, q.text, a.authorId, a.name, a.bio, a.avatar FROM quote as q LEFT JOIN author as a ON q.authorId = a.authorId LIMIT ?,?`,
     [helper.getOffset(page, process.env.LIST_PER_PAGE), process.env.LIST_PER_PAGE]
   )
 
