@@ -18,10 +18,10 @@ const Quote = function (quote) {
  * @returns
  */
 Quote.getAll = async function (page = 1) {
-  const rows = await db.query(`SELECT * FROM quote LIMIT ?,?`, [
-    helper.getOffset(page, process.env.LIST_PER_PAGE),
-    process.env.LIST_PER_PAGE,
-  ])
+  const rows = await db.query(
+    `SELECT q.quoteId, q.text, a.autorId, a.name FROM quote as q LEFT JOIN author as a ON q.authorId = a.authorId LIMIT ?,?`,
+    [helper.getOffset(page, process.env.LIST_PER_PAGE), process.env.LIST_PER_PAGE]
+  )
 
   return {
     data: helper.emptyOrRows(rows),
