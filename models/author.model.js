@@ -23,7 +23,7 @@ const author = function (author) {
 author.getAll = async function (page = 1) {
   const rows = await db.query(`SELECT authorId, name, bio, avatar FROM author LIMIT ?,?`, [
     helper.getOffset(page, process.env.LIST_PER_PAGE),
-    process.env.LIST_PER_PAGE,
+    Number(process.env.LIST_PER_PAGE),
   ])
 
   return {
