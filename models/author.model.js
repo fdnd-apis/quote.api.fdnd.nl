@@ -2,9 +2,9 @@ const db = require('./db')
 const helper = require('./helper')
 
 /**
- * Constructor for new quotes that checks if the passed object adheres the format
+ * Constructor for new authors that checks if the passed object adheres the format
  * we need and throws errors if it doesn't
- * @param {*} quote an object containing the necessary fields to make a new quote
+ * @param {*} author an object containing the necessary fields to make a new author
  */
 const author = function (author) {
   // TODO: Check for sanity...
