@@ -18,7 +18,7 @@ const promisePool = pool.promise()
  * @param {*} params - the parameters used to fill in ?'s in the sequel string
  */
 module.exports.query = async function (sql, params) {
-  console.log(sql, params)
+  // console.log(sql, params)
   const [rows] = await promisePool.query(sql, params)
   return rows
 }
