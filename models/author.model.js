@@ -20,7 +20,7 @@ const author = function (author) {
  * @param {*} page the page of authors you want to get
  * @returns
  */
-autor.getAll = async function (page = 1) {
+author.getAll = async function (page = 1) {
   const rows = await db.query(`SELECT authorId, name, bio, avatar FROM author LIMIT ?,?`, [
     helper.getOffset(page, process.env.LIST_PER_PAGE),
     process.env.LIST_PER_PAGE,
