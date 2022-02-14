@@ -6,10 +6,11 @@ const helper = require('./helper')
  * we need and throws errors if it doesn't
  * @param {*} quote an object containing the necessary fields to make a new quote
  */
-const Quote = function (quote) {
+const quote = function (quote) {
   // TODO: Check for sanity...
   this.quoteId = quote.quoteId
   this.authorId = quote.authorId
+  this.tags = quote.tags
   this.text = quote.text
 }
 
@@ -19,7 +20,7 @@ const Quote = function (quote) {
  * @param {*} page the page of quotes you want to get
  * @returns
  */
-Quote.getAll = async function (page = 1) {
+quote.getAll = async function (page = 1) {
   const rows = await db.query(
     `SELECT q.quoteId, q.tags, q.text, a.authorId, a.name, a.bio, a.avatar FROM quote as q LEFT JOIN author as a ON q.authorId = a.authorId LIMIT ?,?`,
     [helper.getOffset(page, process.env.LIST_PER_PAGE), process.env.LIST_PER_PAGE]
@@ -31,4 +32,33 @@ Quote.getAll = async function (page = 1) {
   }
 }
 
-module.exports = Quote
+/**
+ * Add a new quote to the database
+ * @param {*} quote a new quote object created with the quote constructor
+ * @returns an object containing the inserted quote with the newly inserted quoteId
+ */
+quote.create = async function (quote) {
+  const rows = await db.query(
+    `INSERT INTO quote SET authorId = ?, tags = ?, text = ?`,
+    prepareForInsert(quote)
+  )
+  quote.quoteId = rows.insertId
+  return {
+    data: [quote],
+    meta: {
+      insertId: rows.insertId,
+    },
+  }
+}
+
+module.exports = quote
+
+/**
+ * Prepares a passed quote object for insertion in the db, it's mostly an order
+ * thing as the insert query expects an array with a certain order.
+ * @param {*} quote a new quote object created with the quote constructor
+ * @returns [] an array to be used in the insert query
+ */
+function prepareForInsert(quote) {
+  return [quote.authorId, quote.tags, quote.text]
+}

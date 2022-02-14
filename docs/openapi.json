@@ -7,12 +7,12 @@
   },
   "servers": [
     {
-      "url": "https://quotes.api.fdnd.nl/v1/",
+      "url": "https://quote.api.fdnd.nl/v1/",
       "description": "Production server"
     }
   ],
   "paths": {
-    "/quotes": {
+    "/quote": {
       "get": {
         "description": "Returns all quotes from the system",
         "responses": {
@@ -26,25 +26,24 @@
               }
             }
           }
-        }
-      }
-    },
-    "/quotes/:id": {
-      "get": {
-        "description": "Returns a single quote identiefied by :id from the system",
-        "responses": {
-          "200": {
-            "description": "A quote",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        }
-      }
+        },
+        "tags": [
+          "quote"
+        ],
+        "summary": ""
+      },
+      "parameters": []
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "author"
+    },
+    {
+      "name": "quote"
+    },
+    {
+      "name": "tag"
+    }
+  ]
 }

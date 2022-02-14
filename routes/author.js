@@ -1,25 +1,25 @@
 const express = require('express')
-const Quote = require('../models/quote.model')
+const Author = require('../models/author.model')
 
 module.exports = express
   .Router()
 
-  // Add a new quote
+  // Add a new author
   .post('/', async (req, res, next) => {
     try {
-      res.json(await Quote.create(new Quote(req.body)))
+      res.json(await Author.create(new Author(req.body)))
     } catch (err) {
-      console.error('Error while adding quote: ', err.message)
+      console.error('Error while adding author: ', err.message)
       next(err)
     }
   })
 
-  // List ALL quotes
+  // List ALL authors
   .get('/', async (req, res, next) => {
     try {
-      res.json(await Quote.getAll(req.query.page))
+      res.json(await Author.getAll(req.query.page))
     } catch (err) {
-      console.error('Error while getting quotes: ', err.message)
+      console.error('Error while getting authors: ', err.message)
       next(err)
     }
   })
