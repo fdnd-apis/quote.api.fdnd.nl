@@ -7,7 +7,6 @@ module.exports = express
   // Add a new author
   .post('/', async (req, res, next) => {
     try {
-      console.log('Got: ', req.body)
       res.json(await Author.create(new Author(req.body)))
     } catch (err) {
       console.error('Error while adding author: ', err.message)
