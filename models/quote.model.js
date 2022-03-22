@@ -45,7 +45,7 @@ quote.getById = async function (quoteId) {
 
   return {
     data: helper.emptyOrRows(rows),
-    meta: { page },
+    meta: {},
   }
 }
 
