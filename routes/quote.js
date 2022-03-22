@@ -23,3 +23,13 @@ module.exports = express
       next(err)
     }
   })
+
+  // Get a specific quote
+  .get('/:id', async (req, res, next) => {
+    try {
+      res.json(await Quote.getById(req.params.id))
+    } catch (err) {
+      console.error('Error while getting quotes: ', err.message)
+      next(err)
+    }
+  })

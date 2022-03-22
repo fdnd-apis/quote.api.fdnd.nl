@@ -33,6 +33,23 @@ quote.getAll = async function (page = 1) {
 }
 
 /**
+ *
+ * @param {*} quoteId
+ * @returns
+ */
+quote.getById = async function (quoteId) {
+  const rows = await db.query(
+    `SELECT q.quoteId, q.tags, q.text, a.authorId, a.name, a.bio, a.avatar FROM quote as q LEFT JOIN author as a ON q.authorId = a.authorId WHERE q.quoteId = ?`,
+    [quoteId]
+  )
+
+  return {
+    data: helper.emptyOrRows(rows),
+    meta: { page },
+  }
+}
+
+/**
  * Add a new quote to the database
  * @param {*} quote a new quote object created with the quote constructor
  * @returns an object containing the inserted quote with the newly inserted quoteId
